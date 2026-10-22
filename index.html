@@ -4,7 +4,7 @@ html,body{margin:0;height:100%;background:#0d0a0a;overflow:hidden}
 .s{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:max(100vw,177.78vh);height:max(56.25vw,100vh);background:url(bg.png) 0 0/100% 100%;image-rendering:pixelated;overflow:hidden}
 @media (max-aspect-ratio:4/3){.s{width:min(100vw,177.78vh);height:min(56.25vw,100vh)}}
 .s>*{position:absolute;pointer-events:none;image-rendering:pixelated}
-#snow{left:5.384%;top:10.526%;width:12.427%;height:26.555%;z-index:6}#snow2{left:78.600%;top:10.526%;width:12.427%;height:26.555%;z-index:6}.wframe,.rfront{z-index:7!important;filter:brightness(.52) saturate(.85)}#night{inset:0;z-index:4;background:radial-gradient(ellipse 34% 52% at 50.6% 50%,rgba(8,12,35,0) 0,rgba(8,12,35,.18) 45%,rgba(8,12,35,.5) 85%,rgba(8,12,35,.58) 100%)}#glow{z-index:5!important}.lt,.gl{z-index:8!important}#fire{z-index:1}.e{z-index:6!important}.lt{width:.45%;height:.8%;margin:-.4% 0 0 -.22%;background:radial-gradient(circle,rgba(255,250,200,.95) 0 25%,rgba(255,210,110,.5) 45%,transparent 70%);z-index:5;animation:tw 2s steps(3) infinite}@keyframes tw{0%,100%{opacity:.15}50%{opacity:1}}.wframe{z-index:2}.santa,.sarm{z-index:3}[class*=stk],[class*=mt]{z-index:2}
+#snow{left:5.384%;top:10.526%;width:12.427%;height:26.555%;z-index:6;-webkit-mask:url(pm1.png) 0 0/100% 100%;mask:url(pm1.png) 0 0/100% 100%}#snow2{left:78.600%;top:10.526%;width:12.427%;height:26.555%;z-index:6;-webkit-mask:url(pm2.png) 0 0/100% 100%;mask:url(pm2.png) 0 0/100% 100%}.wframe,.rfront{z-index:2!important}#night{inset:0;z-index:4;background:radial-gradient(ellipse 34% 52% at 50.6% 50%,rgba(8,12,35,0) 0,rgba(8,12,35,.18) 45%,rgba(8,12,35,.5) 85%,rgba(8,12,35,.58) 100%)}#glow{z-index:5!important}.lt,.gl{z-index:8!important}#fire{z-index:1}.e{z-index:6!important}.lt{width:.45%;height:.8%;margin:-.4% 0 0 -.22%;background:radial-gradient(circle,rgba(255,250,200,.95) 0 25%,rgba(255,210,110,.5) 45%,transparent 70%);z-index:5;animation:tw 2s steps(3) infinite}@keyframes tw{0%,100%{opacity:.15}50%{opacity:1}}.wframe{z-index:2}.santa,.sarm{z-index:3}[class*=stk],[class*=mt]{z-index:2}
 @keyframes cookie{0%,55%,100%{transform:rotate(0)}70%{transform:rotate(6deg)}82%{transform:rotate(-1deg)}88%{transform:rotate(0)}}
 @keyframes stk{0%,100%{transform:rotate(-1.6deg)}50%{transform:rotate(1.6deg)}}
 @keyframes wig{0%,80%,100%{transform:rotate(0)}85%{transform:rotate(-12deg)}90%{transform:rotate(8deg)}95%{transform:rotate(-4deg)}}
@@ -13,7 +13,7 @@ html,body{margin:0;height:100%;background:#0d0a0a;overflow:hidden}
 #fire{left:38.896%;top:33.094%;width:21.983%;height:28.708%;opacity:.9;mix-blend-mode:screen;--m:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent),linear-gradient(transparent 0,transparent 15%,#000 65%);-webkit-mask-image:var(--m);mask-image:var(--m);-webkit-mask-composite:source-in;mask-composite:intersect}
 .front{z-index:2}.ttail,.tbody,.ktail,.kbody,.khead{z-index:3}
 .santa{left:6.236%;top:31.419%;width:21.579%;height:44.577%;transform-origin:50% 100%;animation:br 4.8s ease-in-out infinite}
-.sarm{left:16.106%;top:44.258%;width:7.313%;height:9.569%;transform-origin:80.4% 90.8%;animation:cookie 6s ease-in-out infinite}
+.sarm{left:17.586%;top:44.657%;width:7.761%;height:15.949%;transform-origin:79.8% 87.5%;animation:cookie 6s ease-in-out infinite}
 .stk0{left:59.578%;top:19.458%;width:4.711%;height:14.035%;transform-origin:49.5% 0.0%;animation:stk 3.20s ease-in-out infinite -0.0s}
 .stk1{left:35.711%;top:19.537%;width:4.800%;height:13.955%;transform-origin:54.2% 0.0%;animation:stk 3.65s ease-in-out infinite -0.7s}
 .stk2{left:48.183%;top:19.537%;width:4.172%;height:13.158%;transform-origin:51.6% 0.0%;animation:stk 4.10s ease-in-out infinite -1.4s}
@@ -24,9 +24,9 @@ html,body{margin:0;height:100%;background:#0d0a0a;overflow:hidden}
 .front{left:38.896%;top:43.062%;width:21.983%;height:18.740%;transform-origin:50% 100%;animation:none}
 .ttail{left:48.362%;top:62.121%;width:4.666%;height:9.250%;transform-origin:47.1% 0.9%;animation:sway 7s ease-in-out infinite}
 .tbody{left:36.205%;top:52.951%;width:16.779%;height:18.421%;transform-origin:50% 100%;animation:br 4.4s ease-in-out infinite}
-.ktail{left:52.355%;top:84.769%;width:6.146%;height:10.766%;transform-origin:5.8% 65.9%;animation:flick 9s ease-in-out infinite}
-.kbody{left:37.954%;top:75.518%;width:20.592%;height:20.574%;transform-origin:50% 100%;animation:br 5.2s ease-in-out infinite -2s}
-.khead{left:37.954%;top:75.518%;width:6.819%;height:20.574%;transform-origin:99.3% 89.5%;animation:bob 11s ease-in-out infinite}
+.ktail{left:52.355%;top:83.812%;width:6.146%;height:11.722%;transform-origin:5.8% 66.0%;animation:flick 9s ease-in-out infinite}
+.kbody{left:37.954%;top:73.764%;width:20.592%;height:22.329%;transform-origin:50% 100%;animation:br 5.2s ease-in-out infinite -2s}
+.khead{left:37.954%;top:73.764%;width:6.819%;height:22.329%;transform-origin:99.3% 89.6%;animation:bob 11s ease-in-out infinite}
 .wframe{left:5.114%;top:10.048%;width:12.965%;height:27.512%;transform-origin:50% 50%;animation:none}
 .rfront{left:76.447%;top:5.582%;width:16.734%;height:36.284%;transform-origin:50% 50%;animation:none}
 @keyframes br{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.018)}}
