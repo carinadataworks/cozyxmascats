@@ -1,10 +1,10 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cosy Xmas Cats</title>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cozy Xmas Cats</title>
 <style>
 html,body{margin:0;height:100%;background:#0d0a0a;overflow:hidden}
 .s{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:max(100vw,177.78vh);height:max(56.25vw,100vh);background:url(bg.png) 0 0/100% 100%;image-rendering:pixelated;overflow:hidden}
 @media (max-aspect-ratio:4/3){.s{width:min(100vw,177.78vh);height:min(56.25vw,100vh)}}
 .s>*{position:absolute;pointer-events:none;image-rendering:pixelated}
-#fire{left:38.896%;top:33.094%;width:21.983%;height:28.708%;opacity:.92;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+#fire{left:38.896%;top:33.094%;width:21.983%;height:28.708%;opacity:.9;mix-blend-mode:screen;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
 .front{z-index:2}.ttail,.tbody,.ktail,.kbody,.khead{z-index:3}
 .front{left:38.896%;top:43.062%;width:21.983%;height:18.740%;transform-origin:50% 100%;animation:none}
 .ttail{left:48.362%;top:62.121%;width:4.666%;height:9.250%;transform-origin:47.1% 0.9%;animation:sway 7s ease-in-out infinite}
@@ -36,9 +36,9 @@ html,body{margin:0;height:100%;background:#0d0a0a;overflow:hidden}
 (function(){const c=document.getElementById('fire'),x=c.getContext('2d'),w=96,h=72,P=[[0,0,0,0]];
 const st=[[40,8,4],[90,16,6],[140,30,8],[180,50,10],[210,80,14],[235,115,20],[248,150,30],[255,185,50],[255,215,90],[255,240,160],[255,252,220]];
 for(let i=1;i<37;i++){const f=i/36*(st.length-1),a=Math.floor(f),b=Math.min(a+1,st.length-1),t=f-a;P.push([0,1,2].map(k=>st[a][k]+(st[b][k]-st[a][k])*t).concat([Math.min(255,i*22)]))}
-const F=new Uint8Array(w*h);for(let i=0;i<w;i++){const d=Math.abs(i-w/2)/(w/2);F[(h-1)*w+i]=d<.85?36:0}
+const F=new Uint8Array(w*h);for(let i=0;i<w;i++){const d=Math.abs(i-w/2)/(w/2);F[(h-1)*w+i]=d<.9?36:30}
 const img=x.createImageData(w,h),g=document.getElementById('glow'),rm=matchMedia('(prefers-reduced-motion: reduce)').matches;let last=0;
-function step(){for(let X=0;X<w;X++)for(let Y=1;Y<h;Y++){const s=Y*w+X,p=F[s];if(!p){F[s-w]=0;continue}const r=Math.random()*3.4|0,d=s-r+1;F[Math.max(0,d-w)]=Math.max(0,p-(r&1)-(Math.random()<.45?1:0))}
+function step(){for(let X=0;X<w;X++)for(let Y=1;Y<h;Y++){const s=Y*w+X,p=F[s];if(!p){F[s-w]=0;continue}const r=Math.random()*3.4|0,d=s-r+1;F[Math.max(0,d-w)]=Math.max(0,p-(r&1)*(Math.random()<.7?1:0))}
 for(let i=0;i<w*h;i++){const q=P[F[i]];img.data.set(q,i*4)}x.putImageData(img,0,0)}
 function loop(t){if(t-last>33){last=t;step();g.style.opacity=.75+Math.random()*.25}requestAnimationFrame(loop)}
 for(let i=0;i<40;i++)step();if(!rm)requestAnimationFrame(loop);else step()})();
