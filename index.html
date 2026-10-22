@@ -15,9 +15,25 @@ html,body{margin:0;height:100%;background:#0d0a0a;overflow:hidden}
 .e{width:.6%;height:.6%;background:#ffb347;left:50%;top:44%;animation:em 3s steps(12) infinite;opacity:0}
 @keyframes em{0%{opacity:0;transform:translate(0,0)}15%{opacity:1}100%{opacity:0;transform:translate(1vmin,-9vmin)}}
 @media (prefers-reduced-motion:reduce){.s *{animation:none!important}.e{display:none}}
+.btn{position:fixed;left:50%;bottom:4vmin;transform:translateX(-50%);font:bold 14px monospace;color:#ffe3a8;background:#3a1c14;border:3px solid #ffb347;box-shadow:3px 3px 0 #000;padding:8px 14px;cursor:pointer;image-rendering:pixelated;transition:opacity 1.5s;z-index:9}
 </style></head><body><div class="s">
 <div class="r"></div><div class="f"></div>
 <div class="c t"></div><div class="c k"></div>
 <i class="l" style="left:95%;top:24.5%"></i><i class="l" style="left:97.8%;top:35.6%;animation-delay:-.7s"></i><i class="l" style="left:91.6%;top:37.6%;animation-delay:-1.3s"></i><i class="l" style="left:93%;top:49.6%;animation-delay:-.4s"></i><i class="l" style="left:98%;top:52.8%;animation-delay:-1.6s"></i><i class="l" style="left:91.2%;top:58.4%;animation-delay:-1s"></i>
 <i class="e"></i><i class="e" style="left:45%;animation-delay:-1s"></i><i class="e" style="left:56%;animation-delay:-2s"></i>
-</div></body></html>
+</div><button class="btn" id="b">&#9654; click for sound</button><script>
+let A,M,on=0;const B=document.getElementById('b');
+function noise(c,s){const n=c.sampleRate*s,b=c.createBuffer(1,n,c.sampleRate),d=b.getChannelData(0);let l=0;for(let i=0;i<n;i++){const w=Math.random()*2-1;l=(l+.02*w)/1.02;d[i]=s>1?l*3.5:w}return b}
+function src(b){const s=A.createBufferSource();s.buffer=b;s.loop=true;s.start();return s}
+function start(){A=new AudioContext();M=A.createGain();M.gain.value=.5;M.connect(A.destination);const t=A.currentTime;
+// purr
+const p=src(noise(A,4)),pf=A.createBiquadFilter();pf.type='lowpass';pf.frequency.value=180;const am=A.createGain();am.gain.value=0;const o=A.createOscillator();o.frequency.value=25;const og=A.createGain();og.gain.value=.5;o.connect(og).connect(am.gain);o.start();const br=A.createGain();br.gain.value=.25;const bo=A.createOscillator();bo.frequency.value=.4;const bg=A.createGain();bg.gain.value=.2;bo.connect(bg).connect(br.gain);bo.start();p.connect(pf).connect(am).connect(br).connect(M);
+// hiss
+const wb=noise(A,2),h=src(wb),hf=A.createBiquadFilter();hf.type='bandpass';hf.frequency.value=3000;const hg=A.createGain();hg.gain.value=.012;h.connect(hf).connect(hg).connect(M);
+(function cr(){const s=A.createBufferSource();s.buffer=wb;const f=A.createBiquadFilter();f.type='highpass';f.frequency.value=1000+Math.random()*3000;const g=A.createGain(),n=A.currentTime;g.gain.setValueAtTime(.08*Math.random()+.02,n);g.gain.exponentialRampToValueAtTime(.001,n+.03+Math.random()*.05);s.connect(f).connect(g).connect(M);s.start(n,Math.random());s.stop(n+.1);setTimeout(cr,60+Math.random()*(Math.random()<.2?80:600))})();
+// Silent Night
+const N={D:587.3,E:659.3,F:698.5,G:784,A:880,B:987.8,c:1046.5,d:1174.7,e:1318.5,f:1396.9},q='G3A1G2E6G3A1G2E6d4d2B6c4c2G6A4A2c3B1A2G3A1G2E6A4A2c3B1A2G3A1G2E6d4d2f3d1B2c6e6c3G1E2G3F1D2c12'.match(/[A-Za-z]\d+/g);
+function bell(f,t,d){[1,2,3.01].forEach((h,i)=>{const o=A.createOscillator(),g=A.createGain();o.frequency.value=f*h;g.gain.setValueAtTime(.05/(1+i*3),t);g.gain.exponentialRampToValueAtTime(.0001,t+d+1.2);o.connect(g).connect(M);o.start(t);o.stop(t+d+1.3)})}
+(function song(t0){let t=t0;q.forEach(x=>{const d=+x.slice(1)*.33;bell(N[x[0]],t,d);t+=d});setTimeout(()=>song(t+4),(t-A.currentTime)*1000)})(t+1);on=1}
+document.addEventListener('click',()=>{if(!A){start();B.style.opacity=0;setTimeout(()=>B.remove(),1600)}else{on=!on;M.gain.setTargetAtTime(on?.5:0,A.currentTime,.1)}});
+</script></body></html>
